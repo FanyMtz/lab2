@@ -15,3 +15,6 @@ begin
 insert into videos values (@idvideo,@titulo,@repro,@url)
 end 
 
+--sirve para provar create procedure
+EXEC sp_video_insertar 1,'video uno',1,'youtube.com'
+select * from videos;

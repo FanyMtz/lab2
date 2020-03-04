@@ -54,6 +54,7 @@ namespace MVCLaboratorio.Controllers
         [HttpPost]
         public ActionResult Delete(int idVideo)
         {
+            BaseHelper.ejecutarSentencia("Delete * from Video where idVideo=@idVideo", CommandType.Text);
             return View();
         }
 
@@ -64,6 +65,18 @@ namespace MVCLaboratorio.Controllers
 
         [HttpPost]
         public ActionResult Edit(int idVideo, string titulo, int repro, string url)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add
+            return View();
+        }
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+    [HttpPost]
+        public ActionResult Search()
         {
             return View();
         }
