@@ -67,18 +67,27 @@ namespace MVCLaboratorio.Controllers
         public ActionResult Edit(int idVideo, string titulo, int repro, string url)
         {
             List<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add
-            return View();
+            parametros.Add(new SqlParameter("@idVideo", idVideo));
+            parametros.Add(new SqlParameter("@titulo", titulo));
+            parametros.Add(new SqlParameter("@repro", repro));
+            parametros.Add(new SqlParameter("@url", url));
+
+            BaseHelper.ejecutarSentencia("Update titulo=@titulo,repro=@repro,url=@url where idVideo=@idVideo", CommandType.Text);
+
+            return RedirectToAction("Index", "Video");
         }
         public ActionResult Search()
         {
             return View();
         }
 
-    [HttpPost]
-        public ActionResult Search()
+         [HttpPost]
+        public ActionResult Search(int idVideo)
         {
-            return View();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@idVideo", idVideo));
+            BaseHelper.ejecutarSentencia("Select * from Video where idVideo=@idVideo", CommandType.Text);
+            return RedirectToAction("Index", "Video");
         }
 
         
